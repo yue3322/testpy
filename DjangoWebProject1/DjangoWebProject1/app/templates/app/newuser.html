@@ -1,0 +1,17 @@
+﻿{% csrf_token %}
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<form action="/getuser" method="post">
+{% csrf_token %}
+用户名：<input type="text" name="username"/>
+密码：<input type="password" name="password"/>
+<input type="submit" value="提交" />
+</form>
+</body>
+</html>

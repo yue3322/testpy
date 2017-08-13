@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+<table>
+<tr>
+    <th>no</th>
+    <th>username</th>
+    <th>password</th>
+    <th>age</th>
+</tr>
+{% for item in list %}
+<tr>
+    <td>{{item.id}}</td>
+    <td>{{item.username}}</td>
+    <td>{{item.password}}</td>
+    <td>{{item.age}}</td>
+</tr>
+{% endfor %}
+</table>
+</body>
+</html>
