@@ -4,20 +4,31 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        table {
+            width:500px;
+            border-bottom:1px solid #666;
+            border-right:1px solid #666;
+            border-spacing:0px;
+        }
+        td,th{
+            border-top:1px solid #666;
+            border-left:1px solid #666;
+
+        }
+    </style>
 </head>
 <body>
 <table>
 <tr>
-    <th>no</th>
-    <th>username</th>
-    <th>password</th>
-    <th>age</th>
+    <th>号码</th>
+    <th>名字</th>
+    <th>年龄</th>
 </tr>
 {% for item in list %}
 <tr>
     <td>{{item.id}}</td>
-    <td>{{item.username}}</td>
-    <td>{{item.password}}</td>
+    <td>{{item.name}}</td>
     <td>{{item.age}}</td>
 </tr>
 {% endfor %}

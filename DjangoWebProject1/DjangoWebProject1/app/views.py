@@ -70,12 +70,12 @@ def getUser(request):
     pwd = request.POST.get('password')
     client = MongoClient('192.168.17.191',27017)
     db = client.test
-    collection  = db.User
+    collection  = db.test
     id = random.randint(10000000,99999999)
     one = collection.find_one({"id":id})
     while(collection.find_one({"id":id})): 
         id= random.randint(10000000,99999999)  
-    ret = collection.insert({'id':id,'age':25,'password':pwd,'username':user})
+    ret = collection.insert({'id':id,'age':25,'password':pwd,'name':user})
     getU = collection.find_one({"id":id})
     return render(
        request,
@@ -90,15 +90,18 @@ def userList(request):
     assert isinstance(request,HttpRequest)
     client = MongoClient('192.168.17.191',27017)
     db = client.test
-    collection  = db.User
+    collection  = db.test
     #id = random.randint(10000000,99999999)
     list = collection.find()
+   #for item in list:
+     #   print(item.get("name"))
+    #a = list.count()
     return render(
        request,
        'app/userlist.html',
        {
            'title':'About',
            'message':'Your application description page.',
-           'getU':list
+           'list':list
        }
      )
