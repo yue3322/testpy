@@ -54,6 +54,7 @@
     <Folder Include="DjangoWebProject1\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\templates\app\Crawler.html" />
     <Content Include="app\templates\app\getuser.html" />
     <Content Include="app\templates\app\newuser.html" />
     <Content Include="app\templates\app\userlist.html" />

@@ -7,7 +7,10 @@ from django.http import HttpRequest
 from django.template import RequestContext
 from datetime import datetime
 from pymongo import MongoClient
+import re
 import random
+import urllib
+from html import HTMLParser
 from django.views.decorators.csrf import csrf_protect
 
 def home(request):
@@ -105,3 +108,19 @@ def userList(request):
            'list':list
        }
      )
+def Crawler(request):
+    rs = urllib.request.urlopen("https://www.iqshw.com/")
+    html = str(rs.read())
+    #pattern = re.compile('<em class="show-polution-num">*?</em>',re.S)
+    result = re.search('<span id="post-date">.*:\d*</span>',html)
+            #替换
+    phone = '18898537584 #这是我的电话号码'
+    #search
+    ip_addr = re.search('\d*',phone)
+    return render(
+            request,
+            'app/Crawler.html',
+            {
+                
+            }
+        )

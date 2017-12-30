@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^getuser',app.views.getUser,name='getuser'),
     url(r'^newuser',app.views.newUser,name='newuser'),
     url(r'^userlist',app.views.userList,name='userlist'),
+    url(r'^Crawler',app.views.Crawler,name='Crawler'),
     url(r'^login/$',
         django.contrib.auth.views.login,
         {
