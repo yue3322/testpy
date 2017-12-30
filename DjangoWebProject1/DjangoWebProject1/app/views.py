@@ -10,7 +10,7 @@ from pymongo import MongoClient
 import re
 import random
 import urllib
-from html import HTMLParser
+from html.parser import HTMLParser
 from django.views.decorators.csrf import csrf_protect
 
 def home(request):
@@ -113,6 +113,11 @@ def Crawler(request):
     html = str(rs.read())
     #pattern = re.compile('<em class="show-polution-num">*?</em>',re.S)
     result = re.search('<span id="post-date">.*:\d*</span>',html)
+    #创建子类实例
+    parser = MyHTMLParser()
+     
+    #将html数据传给解析器进行解析
+    parser.feed(html)
             #替换
     phone = '18898537584 #这是我的电话号码'
     #search
@@ -124,3 +129,27 @@ def Crawler(request):
                 
             }
         )
+#定义HTMLParser的子类,用以复写HTMLParser中的方法
+class MyHTMLParser(HTMLParser):
+ 
+    #构造方法,定义data数组用来存储html中的数据
+    def __init__(self):
+        HTMLParser.__init__(self)
+        self.data = []
+ 
+    #覆盖starttag方法,可以进行一些打印操作
+    def handle_starttag(self, tag, attrs):
+        pass
+        #print("Start Tag: ",tag)
+        #for attr in attrs:
+        #   print(attr)
+     
+    #覆盖endtag方法
+    def handle_endtag(self, tag):
+        pass
+ 
+    #覆盖handle_data方法,用来处理获取的html数据,这里保存在data数组
+    def handle_data(self, data):
+        if data.count('\n') == 0:
+            self.data.append(data)
+ 
